@@ -401,5 +401,4 @@ class AIHS_Scoring {
     }
 }
 
-error_log('AI Health Savetnik: Scoring class loaded');
 ?>

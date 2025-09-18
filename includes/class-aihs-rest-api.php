@@ -563,5 +563,4 @@ class AIHS_REST_API {
     }
 }
 
-error_log('AI Health Savetnik: REST API class loaded');
 ?>

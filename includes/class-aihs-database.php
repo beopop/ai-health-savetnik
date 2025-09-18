@@ -135,7 +135,6 @@ class AIHS_Database {
         // Save database version
         update_option('aihs_db_version', AIHS_VERSION);
 
-        error_log('AI Health Savetnik: Database tables created/updated');
     }
 
     /**
@@ -698,5 +697,4 @@ class AIHS_Database {
     }
 }
 
-error_log('AI Health Savetnik: Database class loaded');
 ?>

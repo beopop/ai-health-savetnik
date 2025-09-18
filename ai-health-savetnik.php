@@ -88,8 +88,6 @@ class AI_Health_Savetnik {
 
         // Initialize components
         $this->init_hooks();
-
-        error_log('AI Health Savetnik: Plugin initialized');
     }
 
     /**
@@ -145,8 +143,6 @@ class AI_Health_Savetnik {
      * Plugin activation
      */
     public function activate() {
-        error_log('AI Health Savetnik: Activating plugin...');
-
         // Create database tables
         if (class_exists('AIHS_Database')) {
             AIHS_Database::create_tables();
@@ -160,20 +156,14 @@ class AI_Health_Savetnik {
 
         // Flush rewrite rules
         flush_rewrite_rules();
-
-        error_log('AI Health Savetnik: Plugin activated successfully');
     }
 
     /**
      * Plugin deactivation
      */
     public function deactivate() {
-        error_log('AI Health Savetnik: Deactivating plugin...');
-
         // Flush rewrite rules
         flush_rewrite_rules();
-
-        error_log('AI Health Savetnik: Plugin deactivated');
     }
 
     /**
@@ -307,7 +297,6 @@ class AI_Health_Savetnik {
             );
 
             update_option('aihs_health_questions', $default_questions);
-            error_log('AI Health Savetnik: Default questions created');
         }
     }
 
@@ -481,6 +470,4 @@ class AI_Health_Savetnik {
 
 // Initialize plugin
 AI_Health_Savetnik::get_instance();
-
-error_log('AI Health Savetnik: Main plugin file loaded');
 ?>

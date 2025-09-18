@@ -378,5 +378,4 @@ function aihs_health_stats_shortcode($atts) {
     return ob_get_clean();
 }
 
-error_log('AI Health Savetnik: Shortcodes loaded');
 ?>

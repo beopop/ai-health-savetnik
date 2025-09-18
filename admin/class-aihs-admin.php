@@ -911,5 +911,4 @@ class AIHS_Admin {
     }
 }
 
-error_log('AI Health Savetnik: Admin class loaded');
 ?>

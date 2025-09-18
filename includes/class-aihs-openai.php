@@ -419,5 +419,4 @@ Your expertise includes nutrition, stress management, sleep optimization, digest
     }
 }
 
-error_log('AI Health Savetnik: OpenAI class loaded');
 ?>

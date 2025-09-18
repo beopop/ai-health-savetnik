@@ -475,6 +475,4 @@ if (!wp_next_scheduled('aihs_cleanup_expired_data')) {
 }
 
 add_action('aihs_cleanup_expired_data', 'aihs_cleanup_expired_data');
-
-error_log('AI Health Savetnik: Helper functions loaded');
 ?>
