@@ -78,6 +78,10 @@ class AI_Health_Savetnik {
         // Include required files
         $this->includes();
 
+        // WooCommerce integration
+        require_once AIHS_PLUGIN_DIR . 'includes/class-aihs-woocommerce.php';
+        require_once AIHS_PLUGIN_DIR . 'includes/class-aihs-package-generator.php';
+
         // Initialize components
         $this->init_hooks();
 
@@ -426,9 +430,9 @@ class AI_Health_Savetnik {
             true
         );
 
-        wp_localize_script('aihs-frontend', 'aihsData', array(
-            'ajaxurl' => admin_url('admin-ajax.php'),
-            'resturl' => rest_url('aihs/v1/'),
+        wp_localize_script('aihs-frontend', 'aihs_ajax', array(
+            'ajax_url' => admin_url('admin-ajax.php'),
+            'rest_url' => rest_url('aihs/v1/'),
             'nonce' => wp_create_nonce('aihs_nonce'),
             'questions' => get_option('aihs_health_questions', array()),
             'ui_settings' => get_option('aihs_ui_settings', array())

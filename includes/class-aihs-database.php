@@ -487,6 +487,215 @@ class AIHS_Database {
 
         return $stats;
     }
+
+    /**
+     * Get user responses
+     */
+    public static function get_user_responses($user_id, $limit = 10) {
+        global $wpdb;
+        $table = $wpdb->prefix . AIHS_RESPONSES_TABLE;
+
+        return $wpdb->get_results($wpdb->prepare(
+            "SELECT * FROM $table WHERE user_id = %d ORDER BY created_at DESC LIMIT %d",
+            $user_id, $limit
+        ));
+    }
+
+    /**
+     * Get user packages (saved packages)
+     */
+    public static function get_user_packages($user_id) {
+        global $wpdb;
+        $packages_table = $wpdb->prefix . AIHS_PACKAGES_TABLE;
+
+        return $wpdb->get_results($wpdb->prepare(
+            "SELECT * FROM $packages_table WHERE user_id = %d AND status = 'saved' ORDER BY created_at DESC",
+            $user_id
+        ));
+    }
+
+    /**
+     * Get packages for specific response
+     */
+    public static function get_packages_for_response($response_id) {
+        global $wpdb;
+        $packages_table = $wpdb->prefix . AIHS_PACKAGES_TABLE;
+
+        return $wpdb->get_results($wpdb->prepare(
+            "SELECT * FROM $packages_table WHERE response_id = %d ORDER BY created_at DESC",
+            $response_id
+        ));
+    }
+
+    /**
+     * Get all available packages
+     */
+    public static function get_all_packages($limit = 20) {
+        global $wpdb;
+        $packages_table = $wpdb->prefix . AIHS_PACKAGES_TABLE;
+
+        return $wpdb->get_results($wpdb->prepare(
+            "SELECT * FROM $packages_table WHERE status IN ('generated', 'active') ORDER BY created_at DESC LIMIT %d",
+            $limit
+        ));
+    }
+
+    /**
+     * Track package order
+     */
+    public static function track_package_order($package_id, $order_id, $user_id) {
+        global $wpdb;
+        $packages_table = $wpdb->prefix . AIHS_PACKAGES_TABLE;
+
+        return $wpdb->update(
+            $packages_table,
+            array(
+                'status' => 'purchased',
+                'order_id' => $order_id,
+                'user_id' => $user_id,
+                'updated_at' => current_time('mysql')
+            ),
+            array('id' => $package_id),
+            array('%s', '%d', '%d', '%s'),
+            array('%d')
+        ) !== false;
+    }
+
+    /**
+     * Update response package status
+     */
+    public static function update_response_package_status($response_id, $package_id, $status) {
+        global $wpdb;
+        $responses_table = $wpdb->prefix . AIHS_RESPONSES_TABLE;
+
+        $response = self::get_response($response_id);
+        if (!$response) return false;
+
+        $package_data = json_decode($response->ai_custom_packages, true) ?: array();
+
+        // Find and update the specific package
+        foreach ($package_data as &$package) {
+            if ($package['package_id'] == $package_id) {
+                $package['status'] = $status;
+                $package['updated_at'] = current_time('mysql');
+                break;
+            }
+        }
+
+        return $wpdb->update(
+            $responses_table,
+            array('ai_custom_packages' => json_encode($package_data)),
+            array('id' => $response_id),
+            array('%s'),
+            array('%d')
+        ) !== false;
+    }
+
+    /**
+     * Save package for user
+     */
+    public static function save_package_for_user($user_id, $package_id) {
+        global $wpdb;
+        $packages_table = $wpdb->prefix . AIHS_PACKAGES_TABLE;
+
+        // Check if already saved
+        $existing = $wpdb->get_var($wpdb->prepare(
+            "SELECT id FROM $packages_table WHERE user_id = %d AND original_package_id = %d AND status = 'saved'",
+            $user_id, $package_id
+        ));
+
+        if ($existing) {
+            return $existing; // Already saved
+        }
+
+        // Get original package
+        $original_package = self::get_package($package_id);
+        if (!$original_package) return false;
+
+        // Create saved copy
+        $saved_data = array(
+            'user_id' => $user_id,
+            'response_id' => null,
+            'name' => $original_package->name,
+            'description' => $original_package->description,
+            'package_data' => $original_package->package_data,
+            'status' => 'saved',
+            'original_package_id' => $package_id,
+            'created_at' => current_time('mysql'),
+            'updated_at' => current_time('mysql')
+        );
+
+        $result = $wpdb->insert($packages_table, $saved_data);
+        return $result ? $wpdb->insert_id : false;
+    }
+
+    /**
+     * Remove saved package
+     */
+    public static function remove_saved_package($user_id, $package_id) {
+        global $wpdb;
+        $packages_table = $wpdb->prefix . AIHS_PACKAGES_TABLE;
+
+        return $wpdb->delete(
+            $packages_table,
+            array(
+                'id' => $package_id,
+                'user_id' => $user_id,
+                'status' => 'saved'
+            ),
+            array('%d', '%d', '%s')
+        ) !== false;
+    }
+
+    /**
+     * Get package purchase statistics
+     */
+    public static function get_package_stats() {
+        global $wpdb;
+        $packages_table = $wpdb->prefix . AIHS_PACKAGES_TABLE;
+
+        $stats = array();
+
+        // Most popular packages
+        $stats['popular_packages'] = $wpdb->get_results(
+            "SELECT name, COUNT(*) as purchase_count
+             FROM $packages_table
+             WHERE status = 'purchased'
+             GROUP BY name
+             ORDER BY purchase_count DESC
+             LIMIT 5"
+        );
+
+        // Package conversion rates
+        $stats['conversion_rate'] = array(
+            'generated' => (int) $wpdb->get_var("SELECT COUNT(*) FROM $packages_table WHERE status = 'generated'"),
+            'in_cart' => (int) $wpdb->get_var("SELECT COUNT(*) FROM $packages_table WHERE status = 'in_cart'"),
+            'purchased' => (int) $wpdb->get_var("SELECT COUNT(*) FROM $packages_table WHERE status = 'purchased'")
+        );
+
+        // Revenue by packages (would need WooCommerce order data)
+        $stats['total_package_revenue'] = $wpdb->get_var(
+            "SELECT SUM(CAST(JSON_EXTRACT(package_data, '$.final_price') AS DECIMAL(10,2)))
+             FROM $packages_table
+             WHERE status = 'purchased'"
+        );
+
+        return $stats;
+    }
+
+    /**
+     * Delete package
+     */
+    public static function delete_package($package_id) {
+        global $wpdb;
+        $table = $wpdb->prefix . AIHS_PACKAGES_TABLE;
+
+        return $wpdb->delete(
+            $table,
+            array('id' => $package_id),
+            array('%d')
+        ) !== false;
+    }
 }
 
 error_log('AI Health Savetnik: Database class loaded');

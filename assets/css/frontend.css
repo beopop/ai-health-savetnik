@@ -1,0 +1,867 @@
+/**
+ * AI Health Savetnik - Frontend Styles
+ *
+ * Main stylesheet for the frontend components
+ */
+
+/* ==========================================================================
+   Base Styles & Variables
+   ========================================================================== */
+
+:root {
+    --aihs-primary: #667eea;
+    --aihs-primary-dark: #764ba2;
+    --aihs-secondary: #28a745;
+    --aihs-warning: #ffc107;
+    --aihs-danger: #dc3545;
+    --aihs-info: #17a2b8;
+    --aihs-light: #f8f9fa;
+    --aihs-dark: #2c3e50;
+    --aihs-gray: #6c757d;
+    --aihs-gray-light: #e9ecef;
+
+    --aihs-font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    --aihs-border-radius: 8px;
+    --aihs-box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    --aihs-transition: all 0.3s ease;
+}
+
+/* ==========================================================================
+   Container & Layout
+   ========================================================================== */
+
+.aihs-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: var(--aihs-font-family);
+}
+
+.aihs-section {
+    margin-bottom: 2rem;
+}
+
+.aihs-grid {
+    display: grid;
+    gap: 1.5rem;
+}
+
+.aihs-grid-2 { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
+.aihs-grid-3 { grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); }
+.aihs-grid-4 { grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); }
+
+.aihs-flex {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.aihs-flex-column {
+    flex-direction: column;
+    align-items: stretch;
+}
+
+.aihs-flex-center {
+    justify-content: center;
+}
+
+.aihs-flex-between {
+    justify-content: space-between;
+}
+
+/* ==========================================================================
+   Typography
+   ========================================================================== */
+
+.aihs-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--aihs-dark);
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.aihs-subtitle {
+    font-size: 1.2rem;
+    color: var(--aihs-gray);
+    margin-bottom: 2rem;
+    text-align: center;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.aihs-heading {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--aihs-dark);
+    margin-bottom: 1rem;
+}
+
+.aihs-text-muted {
+    color: var(--aihs-gray);
+}
+
+.aihs-text-small {
+    font-size: 0.875rem;
+}
+
+/* ==========================================================================
+   Buttons
+   ========================================================================== */
+
+.aihs-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 24px;
+    border: none;
+    border-radius: var(--aihs-border-radius);
+    font-size: 1rem;
+    font-weight: 500;
+    text-decoration: none;
+    cursor: pointer;
+    transition: var(--aihs-transition);
+    gap: 8px;
+    min-height: 44px;
+}
+
+.aihs-btn:hover {
+    text-decoration: none;
+    transform: translateY(-1px);
+}
+
+.aihs-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.aihs-btn-primary {
+    background: linear-gradient(135deg, var(--aihs-primary) 0%, var(--aihs-primary-dark) 100%);
+    color: white;
+}
+
+.aihs-btn-primary:hover {
+    background: linear-gradient(135deg, var(--aihs-primary-dark) 0%, var(--aihs-primary) 100%);
+    color: white;
+}
+
+.aihs-btn-secondary {
+    background: var(--aihs-light);
+    color: var(--aihs-dark);
+    border: 1px solid var(--aihs-gray-light);
+}
+
+.aihs-btn-secondary:hover {
+    background: var(--aihs-gray-light);
+    color: var(--aihs-dark);
+}
+
+.aihs-btn-success {
+    background: var(--aihs-secondary);
+    color: white;
+}
+
+.aihs-btn-success:hover {
+    background: #218838;
+    color: white;
+}
+
+.aihs-btn-warning {
+    background: var(--aihs-warning);
+    color: var(--aihs-dark);
+}
+
+.aihs-btn-danger {
+    background: var(--aihs-danger);
+    color: white;
+}
+
+.aihs-btn-large {
+    padding: 16px 32px;
+    font-size: 1.125rem;
+}
+
+.aihs-btn-small {
+    padding: 8px 16px;
+    font-size: 0.875rem;
+}
+
+.aihs-btn-block {
+    width: 100%;
+    display: flex;
+}
+
+/* ==========================================================================
+   Forms
+   ========================================================================== */
+
+.aihs-form {
+    background: white;
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: var(--aihs-box-shadow);
+    margin-bottom: 2rem;
+}
+
+.aihs-form-group {
+    margin-bottom: 1.5rem;
+}
+
+.aihs-form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+.aihs-label {
+    display: block;
+    font-weight: 600;
+    color: var(--aihs-dark);
+    margin-bottom: 0.5rem;
+}
+
+.aihs-label.required::after {
+    content: " *";
+    color: var(--aihs-danger);
+}
+
+.aihs-input,
+.aihs-textarea,
+.aihs-select {
+    width: 100%;
+    padding: 12px 16px;
+    border: 2px solid var(--aihs-gray-light);
+    border-radius: var(--aihs-border-radius);
+    font-size: 1rem;
+    transition: var(--aihs-transition);
+    background: white;
+}
+
+.aihs-input:focus,
+.aihs-textarea:focus,
+.aihs-select:focus {
+    outline: none;
+    border-color: var(--aihs-primary);
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+.aihs-input.error,
+.aihs-textarea.error,
+.aihs-select.error {
+    border-color: var(--aihs-danger);
+}
+
+.aihs-input.success,
+.aihs-textarea.success,
+.aihs-select.success {
+    border-color: var(--aihs-secondary);
+}
+
+.aihs-textarea {
+    min-height: 100px;
+    resize: vertical;
+}
+
+.aihs-checkbox,
+.aihs-radio {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 0.5rem;
+}
+
+.aihs-checkbox input[type="checkbox"],
+.aihs-radio input[type="radio"] {
+    width: 18px;
+    height: 18px;
+    margin: 0;
+}
+
+.aihs-form-help {
+    font-size: 0.875rem;
+    color: var(--aihs-gray);
+    margin-top: 0.25rem;
+}
+
+.aihs-form-error {
+    font-size: 0.875rem;
+    color: var(--aihs-danger);
+    margin-top: 0.25rem;
+}
+
+.aihs-form-success {
+    font-size: 0.875rem;
+    color: var(--aihs-secondary);
+    margin-top: 0.25rem;
+}
+
+/* ==========================================================================
+   Progress Bar
+   ========================================================================== */
+
+.aihs-progress {
+    background: var(--aihs-gray-light);
+    border-radius: 50px;
+    height: 8px;
+    margin-bottom: 1rem;
+    overflow: hidden;
+}
+
+.aihs-progress-bar {
+    background: linear-gradient(90deg, var(--aihs-primary), var(--aihs-secondary));
+    height: 100%;
+    border-radius: 50px;
+    transition: width 0.5s ease;
+    position: relative;
+}
+
+.aihs-progress-bar::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: linear-gradient(
+        45deg,
+        transparent 25%,
+        rgba(255, 255, 255, 0.2) 25%,
+        rgba(255, 255, 255, 0.2) 50%,
+        transparent 50%,
+        transparent 75%,
+        rgba(255, 255, 255, 0.2) 75%
+    );
+    background-size: 20px 20px;
+    animation: progress-stripes 1s linear infinite;
+}
+
+@keyframes progress-stripes {
+    0% { background-position: 0 0; }
+    100% { background-position: 20px 0; }
+}
+
+.aihs-progress-text {
+    text-align: center;
+    font-weight: 600;
+    color: var(--aihs-dark);
+    margin-bottom: 0.5rem;
+}
+
+/* ==========================================================================
+   Cards
+   ========================================================================== */
+
+.aihs-card {
+    background: white;
+    border-radius: 15px;
+    box-shadow: var(--aihs-box-shadow);
+    overflow: hidden;
+    transition: var(--aihs-transition);
+}
+
+.aihs-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+}
+
+.aihs-card-header {
+    padding: 1.5rem;
+    border-bottom: 1px solid var(--aihs-gray-light);
+    background: var(--aihs-light);
+}
+
+.aihs-card-body {
+    padding: 1.5rem;
+}
+
+.aihs-card-footer {
+    padding: 1rem 1.5rem;
+    border-top: 1px solid var(--aihs-gray-light);
+    background: var(--aihs-light);
+}
+
+.aihs-card-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--aihs-dark);
+    margin-bottom: 0.5rem;
+}
+
+/* ==========================================================================
+   Quiz Specific Styles
+   ========================================================================== */
+
+.aihs-quiz-container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.aihs-question-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: var(--aihs-box-shadow);
+    margin-bottom: 1.5rem;
+}
+
+.aihs-question-number {
+    display: inline-block;
+    background: var(--aihs-primary);
+    color: white;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 30px;
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+.aihs-question-text {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--aihs-dark);
+    margin-bottom: 1.5rem;
+}
+
+.aihs-answer-options {
+    display: grid;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.aihs-answer-option {
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    border: 2px solid var(--aihs-gray-light);
+    border-radius: var(--aihs-border-radius);
+    cursor: pointer;
+    transition: var(--aihs-transition);
+    background: white;
+}
+
+.aihs-answer-option:hover {
+    border-color: var(--aihs-primary);
+    background: rgba(102, 126, 234, 0.05);
+}
+
+.aihs-answer-option.selected {
+    border-color: var(--aihs-primary);
+    background: rgba(102, 126, 234, 0.1);
+}
+
+.aihs-answer-option input[type="radio"] {
+    margin-right: 12px;
+    width: 20px;
+    height: 20px;
+}
+
+.aihs-intensity-section {
+    background: var(--aihs-light);
+    padding: 1.5rem;
+    border-radius: var(--aihs-border-radius);
+    margin-top: 1rem;
+    display: none;
+}
+
+.aihs-intensity-section.visible {
+    display: block;
+    animation: slideDown 0.3s ease;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.aihs-intensity-title {
+    font-weight: 600;
+    color: var(--aihs-dark);
+    margin-bottom: 1rem;
+}
+
+.aihs-quiz-navigation {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 2rem;
+}
+
+/* ==========================================================================
+   Score Display
+   ========================================================================== */
+
+.aihs-score-container {
+    text-align: center;
+    padding: 2rem;
+    background: white;
+    border-radius: 15px;
+    box-shadow: var(--aihs-box-shadow);
+}
+
+.aihs-score-gauge {
+    position: relative;
+    width: 200px;
+    height: 200px;
+    margin: 0 auto 1.5rem;
+}
+
+.aihs-score-gauge svg {
+    width: 100%;
+    height: 100%;
+    transform: rotate(-90deg);
+}
+
+.aihs-score-value {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--aihs-dark);
+}
+
+.aihs-score-label {
+    font-size: 1.125rem;
+    color: var(--aihs-gray);
+    margin-bottom: 1rem;
+}
+
+.aihs-score-category {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+.aihs-score-category.excellent { color: var(--aihs-secondary); }
+.aihs-score-category.good { color: var(--aihs-warning); }
+.aihs-score-category.moderate { color: #fd7e14; }
+.aihs-score-category.risky { color: var(--aihs-danger); }
+
+/* ==========================================================================
+   Product Grid
+   ========================================================================== */
+
+.aihs-products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.aihs-product-card {
+    background: white;
+    border-radius: 15px;
+    box-shadow: var(--aihs-box-shadow);
+    overflow: hidden;
+    transition: var(--aihs-transition);
+}
+
+.aihs-product-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 25px rgba(0, 0, 0, 0.15);
+}
+
+.aihs-product-image {
+    position: relative;
+    height: 200px;
+    overflow: hidden;
+}
+
+.aihs-product-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.aihs-product-badge {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: var(--aihs-warning);
+    color: var(--aihs-dark);
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.aihs-product-content {
+    padding: 1.5rem;
+}
+
+.aihs-product-title {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: var(--aihs-dark);
+    margin-bottom: 0.5rem;
+}
+
+.aihs-product-price {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--aihs-secondary);
+    margin-bottom: 1rem;
+}
+
+.aihs-product-description {
+    color: var(--aihs-gray);
+    font-size: 0.9rem;
+    line-height: 1.5;
+    margin-bottom: 1rem;
+}
+
+.aihs-confidence-display {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.aihs-confidence-bar {
+    flex: 1;
+    height: 6px;
+    background: var(--aihs-gray-light);
+    border-radius: 3px;
+    overflow: hidden;
+}
+
+.aihs-confidence-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--aihs-secondary), var(--aihs-info));
+    transition: width 0.5s ease;
+}
+
+/* ==========================================================================
+   Alerts & Messages
+   ========================================================================== */
+
+.aihs-alert {
+    padding: 1rem 1.5rem;
+    border-radius: var(--aihs-border-radius);
+    margin-bottom: 1rem;
+    border-left: 4px solid;
+}
+
+.aihs-alert-success {
+    background: #d4edda;
+    color: #155724;
+    border-color: var(--aihs-secondary);
+}
+
+.aihs-alert-warning {
+    background: #fff3cd;
+    color: #856404;
+    border-color: var(--aihs-warning);
+}
+
+.aihs-alert-danger {
+    background: #f8d7da;
+    color: #721c24;
+    border-color: var(--aihs-danger);
+}
+
+.aihs-alert-info {
+    background: #d1ecf1;
+    color: #0c5460;
+    border-color: var(--aihs-info);
+}
+
+.aihs-notice {
+    background: var(--aihs-light);
+    border: 1px solid var(--aihs-gray-light);
+    border-radius: var(--aihs-border-radius);
+    padding: 1rem;
+    margin-bottom: 1rem;
+    color: var(--aihs-gray);
+    text-align: center;
+}
+
+.aihs-error {
+    background: #f8d7da;
+    color: #721c24;
+    border: 1px solid var(--aihs-danger);
+    border-radius: var(--aihs-border-radius);
+    padding: 1rem;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+/* ==========================================================================
+   Loading States
+   ========================================================================== */
+
+.aihs-loading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 2rem;
+}
+
+.aihs-spinner {
+    width: 24px;
+    height: 24px;
+    border: 3px solid var(--aihs-gray-light);
+    border-top: 3px solid var(--aihs-primary);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.aihs-skeleton {
+    background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+    background-size: 200% 100%;
+    animation: loading 1.5s infinite;
+}
+
+@keyframes loading {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+}
+
+.aihs-skeleton-text {
+    height: 1rem;
+    border-radius: 4px;
+    margin-bottom: 0.5rem;
+}
+
+.aihs-skeleton-title {
+    height: 1.5rem;
+    border-radius: 4px;
+    margin-bottom: 1rem;
+    width: 60%;
+}
+
+/* ==========================================================================
+   Utilities
+   ========================================================================== */
+
+.aihs-hidden { display: none !important; }
+.aihs-visible { display: block !important; }
+
+.aihs-text-center { text-align: center; }
+.aihs-text-left { text-align: left; }
+.aihs-text-right { text-align: right; }
+
+.aihs-mt-0 { margin-top: 0; }
+.aihs-mt-1 { margin-top: 0.5rem; }
+.aihs-mt-2 { margin-top: 1rem; }
+.aihs-mt-3 { margin-top: 1.5rem; }
+.aihs-mt-4 { margin-top: 2rem; }
+
+.aihs-mb-0 { margin-bottom: 0; }
+.aihs-mb-1 { margin-bottom: 0.5rem; }
+.aihs-mb-2 { margin-bottom: 1rem; }
+.aihs-mb-3 { margin-bottom: 1.5rem; }
+.aihs-mb-4 { margin-bottom: 2rem; }
+
+.aihs-p-0 { padding: 0; }
+.aihs-p-1 { padding: 0.5rem; }
+.aihs-p-2 { padding: 1rem; }
+.aihs-p-3 { padding: 1.5rem; }
+.aihs-p-4 { padding: 2rem; }
+
+/* ==========================================================================
+   Responsive Design
+   ========================================================================== */
+
+@media (max-width: 768px) {
+    .aihs-container {
+        padding: 1rem;
+    }
+
+    .aihs-title {
+        font-size: 2rem;
+    }
+
+    .aihs-subtitle {
+        font-size: 1rem;
+    }
+
+    .aihs-form {
+        padding: 1.5rem;
+    }
+
+    .aihs-form-row {
+        grid-template-columns: 1fr;
+    }
+
+    .aihs-quiz-navigation {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .aihs-products-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .aihs-score-gauge {
+        width: 150px;
+        height: 150px;
+    }
+
+    .aihs-score-value {
+        font-size: 2rem;
+    }
+
+    .aihs-btn {
+        padding: 10px 20px;
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .aihs-container {
+        padding: 0.5rem;
+    }
+
+    .aihs-card-body,
+    .aihs-form {
+        padding: 1rem;
+    }
+
+    .aihs-question-card {
+        padding: 1.5rem;
+    }
+
+    .aihs-answer-option {
+        padding: 0.75rem;
+    }
+}
+
+/* ==========================================================================
+   Print Styles
+   ========================================================================== */
+
+@media print {
+    .aihs-btn,
+    .aihs-quiz-navigation {
+        display: none;
+    }
+
+    .aihs-card,
+    .aihs-form {
+        box-shadow: none;
+        border: 1px solid #ddd;
+    }
+
+    .aihs-container {
+        max-width: none;
+        padding: 0;
+    }
+}

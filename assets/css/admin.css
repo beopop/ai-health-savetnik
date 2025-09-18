@@ -1,0 +1,877 @@
+/**
+ * AI Health Savetnik - Admin Styles
+ *
+ * Admin interface stylesheet
+ */
+
+/* ==========================================================================
+   Admin Layout & Navigation
+   ========================================================================== */
+
+.aihs-admin-container {
+    margin: 20px 0;
+}
+
+.aihs-admin-header {
+    background: #fff;
+    border-bottom: 1px solid #ccd0d4;
+    padding: 20px;
+    margin: 0 0 20px 0;
+}
+
+.aihs-admin-title {
+    font-size: 23px;
+    font-weight: 400;
+    margin: 0;
+    color: #23282d;
+}
+
+.aihs-admin-nav {
+    background: #fff;
+    border: 1px solid #ccd0d4;
+    border-radius: 3px;
+    margin-bottom: 20px;
+}
+
+.aihs-admin-nav ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    border-bottom: 1px solid #ccd0d4;
+}
+
+.aihs-admin-nav li {
+    margin: 0;
+}
+
+.aihs-admin-nav a {
+    display: block;
+    padding: 15px 20px;
+    text-decoration: none;
+    color: #0073aa;
+    border-right: 1px solid #ccd0d4;
+    transition: background-color 0.3s ease;
+}
+
+.aihs-admin-nav a:hover,
+.aihs-admin-nav a:focus {
+    background-color: #f7f7f7;
+    color: #0073aa;
+    box-shadow: none;
+}
+
+.aihs-admin-nav a.active {
+    background-color: #0073aa;
+    color: #fff;
+}
+
+.aihs-admin-nav li:last-child a {
+    border-right: none;
+}
+
+/* ==========================================================================
+   Dashboard Cards
+   ========================================================================== */
+
+.aihs-dashboard-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.aihs-dashboard-card {
+    background: #fff;
+    border: 1px solid #ccd0d4;
+    border-radius: 3px;
+    padding: 20px;
+    box-shadow: 0 1px 1px rgba(0,0,0,.04);
+}
+
+.aihs-dashboard-card h3 {
+    margin-top: 0;
+    margin-bottom: 15px;
+    font-size: 16px;
+    font-weight: 600;
+    color: #23282d;
+}
+
+.aihs-stat-value {
+    font-size: 32px;
+    font-weight: 300;
+    color: #0073aa;
+    line-height: 1;
+    margin-bottom: 5px;
+}
+
+.aihs-stat-label {
+    color: #646970;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.aihs-stat-change {
+    font-size: 12px;
+    margin-top: 5px;
+}
+
+.aihs-stat-change.positive {
+    color: #00a32a;
+}
+
+.aihs-stat-change.negative {
+    color: #d63638;
+}
+
+/* ==========================================================================
+   Forms & Inputs
+   ========================================================================== */
+
+.aihs-form-table {
+    width: 100%;
+}
+
+.aihs-form-table th {
+    text-align: left;
+    padding: 20px 10px 20px 0;
+    width: 200px;
+    vertical-align: top;
+    font-weight: 600;
+}
+
+.aihs-form-table td {
+    padding: 15px 10px 15px 0;
+    vertical-align: top;
+}
+
+.aihs-form-table input[type="text"],
+.aihs-form-table input[type="email"],
+.aihs-form-table input[type="number"],
+.aihs-form-table input[type="url"],
+.aihs-form-table textarea,
+.aihs-form-table select {
+    width: 100%;
+    max-width: 400px;
+}
+
+.aihs-form-table textarea {
+    height: 100px;
+    resize: vertical;
+}
+
+.aihs-form-help {
+    color: #646970;
+    font-size: 13px;
+    font-style: italic;
+    margin-top: 5px;
+}
+
+.aihs-form-section {
+    background: #fff;
+    border: 1px solid #ccd0d4;
+    margin-bottom: 20px;
+    border-radius: 3px;
+}
+
+.aihs-form-section h3 {
+    margin: 0;
+    padding: 15px 20px;
+    border-bottom: 1px solid #ccd0d4;
+    background: #f9f9f9;
+    font-size: 14px;
+    font-weight: 600;
+    color: #23282d;
+}
+
+.aihs-form-section .inside {
+    padding: 20px;
+}
+
+/* ==========================================================================
+   Tables
+   ========================================================================== */
+
+.aihs-table {
+    width: 100%;
+    background: #fff;
+    border: 1px solid #ccd0d4;
+    border-collapse: collapse;
+    border-radius: 3px;
+    overflow: hidden;
+}
+
+.aihs-table th,
+.aihs-table td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #ccd0d4;
+}
+
+.aihs-table th {
+    background: #f9f9f9;
+    font-weight: 600;
+    color: #23282d;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.aihs-table tbody tr:hover {
+    background: #f9f9f9;
+}
+
+.aihs-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.aihs-table .column-actions {
+    width: 150px;
+}
+
+.aihs-table .status {
+    padding: 4px 8px;
+    border-radius: 3px;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.aihs-table .status.completed {
+    background: #d4edda;
+    color: #155724;
+}
+
+.aihs-table .status.pending {
+    background: #fff3cd;
+    color: #856404;
+}
+
+.aihs-table .status.failed {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+/* ==========================================================================
+   Buttons
+   ========================================================================== */
+
+.aihs-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 8px 16px;
+    border: 1px solid;
+    border-radius: 3px;
+    font-size: 13px;
+    font-weight: 500;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.aihs-btn:hover {
+    text-decoration: none;
+}
+
+.aihs-btn:focus {
+    box-shadow: 0 0 0 1px #fff, 0 0 0 3px #007cba;
+    outline: 1px solid transparent;
+}
+
+.aihs-btn-primary {
+    background: #0073aa;
+    border-color: #0073aa;
+    color: #fff;
+}
+
+.aihs-btn-primary:hover {
+    background: #005a87;
+    border-color: #005a87;
+    color: #fff;
+}
+
+.aihs-btn-secondary {
+    background: #f7f7f7;
+    border-color: #ccd0d4;
+    color: #2c3338;
+}
+
+.aihs-btn-secondary:hover {
+    background: #f1f1f1;
+    border-color: #999;
+    color: #2c3338;
+}
+
+.aihs-btn-danger {
+    background: #d63638;
+    border-color: #d63638;
+    color: #fff;
+}
+
+.aihs-btn-danger:hover {
+    background: #b32d2e;
+    border-color: #b32d2e;
+    color: #fff;
+}
+
+.aihs-btn-small {
+    padding: 4px 8px;
+    font-size: 11px;
+}
+
+.aihs-btn-large {
+    padding: 12px 24px;
+    font-size: 14px;
+}
+
+.aihs-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+/* ==========================================================================
+   Question Manager
+   ========================================================================== */
+
+.aihs-questions-container {
+    background: #fff;
+    border: 1px solid #ccd0d4;
+    border-radius: 3px;
+}
+
+.aihs-question-item {
+    border-bottom: 1px solid #ccd0d4;
+    padding: 20px;
+    position: relative;
+}
+
+.aihs-question-item:last-child {
+    border-bottom: none;
+}
+
+.aihs-question-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 15px;
+}
+
+.aihs-question-number {
+    background: #0073aa;
+    color: #fff;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    font-size: 14px;
+    margin-right: 15px;
+    flex-shrink: 0;
+}
+
+.aihs-question-text {
+    flex: 1;
+    font-weight: 600;
+    color: #23282d;
+    font-size: 16px;
+    line-height: 1.4;
+}
+
+.aihs-question-actions {
+    display: flex;
+    gap: 5px;
+}
+
+.aihs-question-meta {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 15px;
+    margin-top: 15px;
+    padding-top: 15px;
+    border-top: 1px solid #f0f0f1;
+}
+
+.aihs-question-meta-item {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.aihs-question-meta-label {
+    font-size: 12px;
+    color: #646970;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-weight: 600;
+}
+
+.aihs-question-meta-value {
+    font-size: 14px;
+    color: #23282d;
+}
+
+.aihs-question-sortable {
+    cursor: move;
+}
+
+.aihs-question-sortable:hover {
+    background: #f9f9f9;
+}
+
+.aihs-question-editing {
+    background: #f0f6fc;
+    border: 1px solid #0073aa;
+}
+
+/* ==========================================================================
+   Product Integration
+   ========================================================================== */
+
+.aihs-product-health-info {
+    background: #f0f6fc;
+    border: 1px solid #0073aa;
+    border-radius: 3px;
+    padding: 15px;
+    margin: 15px 0;
+}
+
+.aihs-health-categories {
+    margin-bottom: 15px;
+}
+
+.aihs-category-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    margin-top: 5px;
+}
+
+.aihs-category-tag {
+    background: #0073aa;
+    color: #fff;
+    padding: 3px 8px;
+    border-radius: 3px;
+    font-size: 11px;
+    font-weight: 500;
+}
+
+.aihs-ai-recommendation {
+    margin-top: 10px;
+}
+
+.aihs-confidence-display {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 5px;
+}
+
+.aihs-confidence-bar {
+    flex: 1;
+    height: 6px;
+    background: #f0f0f1;
+    border-radius: 3px;
+    overflow: hidden;
+    max-width: 200px;
+}
+
+.aihs-confidence-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #00a32a, #0073aa);
+    transition: width 0.5s ease;
+}
+
+.aihs-confidence-text {
+    font-size: 12px;
+    color: #0073aa;
+    font-weight: 600;
+}
+
+/* ==========================================================================
+   Package Manager
+   ========================================================================== */
+
+.aihs-package-preview {
+    background: #fff;
+    border: 1px solid #ccd0d4;
+    border-radius: 3px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.aihs-package-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 15px;
+}
+
+.aihs-package-title {
+    font-size: 18px;
+    font-weight: 600;
+    color: #23282d;
+    margin: 0;
+}
+
+.aihs-package-discount {
+    background: #d63638;
+    color: #fff;
+    padding: 4px 8px;
+    border-radius: 3px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.aihs-package-description {
+    color: #646970;
+    margin-bottom: 15px;
+    line-height: 1.5;
+}
+
+.aihs-package-products {
+    border-top: 1px solid #f0f0f1;
+    padding-top: 15px;
+}
+
+.aihs-package-products h4 {
+    margin: 0 0 10px 0;
+    font-size: 14px;
+    font-weight: 600;
+    color: #23282d;
+}
+
+.aihs-product-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.aihs-product-list li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 0;
+    border-bottom: 1px solid #f0f0f1;
+}
+
+.aihs-product-list li:last-child {
+    border-bottom: none;
+}
+
+.aihs-product-name {
+    font-weight: 500;
+    color: #23282d;
+}
+
+.aihs-product-price {
+    font-weight: 600;
+    color: #00a32a;
+}
+
+.aihs-package-pricing {
+    background: #f9f9f9;
+    padding: 15px;
+    border-radius: 3px;
+    margin-top: 15px;
+}
+
+.aihs-price-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.aihs-price-row:last-child {
+    margin-bottom: 0;
+    font-weight: 600;
+    font-size: 16px;
+    padding-top: 8px;
+    border-top: 1px solid #ddd;
+}
+
+.aihs-original-price {
+    text-decoration: line-through;
+    color: #646970;
+}
+
+/* ==========================================================================
+   Reports & Analytics
+   ========================================================================== */
+
+.aihs-chart-container {
+    background: #fff;
+    border: 1px solid #ccd0d4;
+    border-radius: 3px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.aihs-chart-title {
+    font-size: 16px;
+    font-weight: 600;
+    color: #23282d;
+    margin: 0 0 20px 0;
+}
+
+.aihs-chart {
+    height: 300px;
+    width: 100%;
+}
+
+.aihs-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.aihs-stat-box {
+    background: #fff;
+    border: 1px solid #ccd0d4;
+    border-radius: 3px;
+    padding: 15px;
+    text-align: center;
+}
+
+.aihs-stat-number {
+    font-size: 24px;
+    font-weight: 300;
+    color: #0073aa;
+    line-height: 1;
+    margin-bottom: 5px;
+}
+
+.aihs-stat-text {
+    color: #646970;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* ==========================================================================
+   Modal & Overlays
+   ========================================================================== */
+
+.aihs-modal-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 100000;
+    display: none;
+}
+
+.aihs-modal {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #fff;
+    border-radius: 3px;
+    box-shadow: 0 3px 30px rgba(0, 0, 0, 0.3);
+    max-width: 600px;
+    width: 90%;
+    max-height: 80vh;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.aihs-modal-header {
+    padding: 20px;
+    border-bottom: 1px solid #ccd0d4;
+    background: #f9f9f9;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.aihs-modal-title {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 600;
+    color: #23282d;
+}
+
+.aihs-modal-close {
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    color: #646970;
+    padding: 0;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 3px;
+}
+
+.aihs-modal-close:hover {
+    background: #f0f0f1;
+    color: #23282d;
+}
+
+.aihs-modal-body {
+    padding: 20px;
+    overflow-y: auto;
+    flex: 1;
+}
+
+.aihs-modal-footer {
+    padding: 15px 20px;
+    border-top: 1px solid #ccd0d4;
+    background: #f9f9f9;
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+/* ==========================================================================
+   Loading States
+   ========================================================================== */
+
+.aihs-loading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+    color: #646970;
+}
+
+.aihs-spinner {
+    width: 20px;
+    height: 20px;
+    border: 2px solid #f0f0f1;
+    border-top: 2px solid #0073aa;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin-right: 10px;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.aihs-skeleton {
+    background: linear-gradient(90deg, #f0f0f1 25%, #e0e0e0 50%, #f0f0f1 75%);
+    background-size: 200% 100%;
+    animation: loading 1.5s infinite;
+}
+
+@keyframes loading {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+}
+
+/* ==========================================================================
+   Alerts & Messages
+   ========================================================================== */
+
+.aihs-notice {
+    background: #fff;
+    border-left: 4px solid #0073aa;
+    box-shadow: 0 1px 1px 0 rgba(0,0,0,.1);
+    margin: 5px 15px 2px;
+    padding: 12px;
+}
+
+.aihs-notice.notice-success {
+    border-left-color: #00a32a;
+}
+
+.aihs-notice.notice-warning {
+    border-left-color: #ffb900;
+}
+
+.aihs-notice.notice-error {
+    border-left-color: #d63638;
+}
+
+.aihs-notice p {
+    margin: 0;
+    padding: 0;
+    line-height: 1.5;
+}
+
+/* ==========================================================================
+   Responsive Design
+   ========================================================================== */
+
+@media screen and (max-width: 782px) {
+    .aihs-admin-nav ul {
+        flex-direction: column;
+    }
+
+    .aihs-admin-nav a {
+        border-right: none;
+        border-bottom: 1px solid #ccd0d4;
+    }
+
+    .aihs-admin-nav li:last-child a {
+        border-bottom: none;
+    }
+
+    .aihs-dashboard-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .aihs-form-table th,
+    .aihs-form-table td {
+        display: block;
+        width: 100%;
+        padding: 10px 0;
+    }
+
+    .aihs-form-table th {
+        border-bottom: 1px solid #ccd0d4;
+        margin-bottom: 5px;
+    }
+
+    .aihs-question-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    .aihs-question-meta {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+
+    .aihs-modal {
+        width: 95%;
+        max-height: 90vh;
+    }
+}
+
+/* ==========================================================================
+   Print Styles
+   ========================================================================== */
+
+@media print {
+    .aihs-admin-nav,
+    .aihs-btn,
+    .aihs-question-actions {
+        display: none;
+    }
+
+    .aihs-admin-container {
+        margin: 0;
+    }
+
+    .aihs-modal,
+    .aihs-modal-backdrop {
+        display: none !important;
+    }
+}
