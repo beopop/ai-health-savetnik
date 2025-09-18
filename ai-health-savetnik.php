@@ -97,24 +97,11 @@ class AI_Health_Savetnik {
         require_once AIHS_PLUGIN_DIR . 'includes/class-aihs-rest-api.php';
         require_once AIHS_PLUGIN_DIR . 'includes/class-aihs-openai.php';
         require_once AIHS_PLUGIN_DIR . 'includes/class-aihs-scoring.php';
-        require_once AIHS_PLUGIN_DIR . 'includes/class-aihs-packages.php';
         require_once AIHS_PLUGIN_DIR . 'includes/aihs-functions.php';
 
         // Admin classes
         if (is_admin()) {
             require_once AIHS_PLUGIN_DIR . 'admin/class-aihs-admin.php';
-            require_once AIHS_PLUGIN_DIR . 'admin/class-aihs-questions.php';
-            require_once AIHS_PLUGIN_DIR . 'admin/class-aihs-products.php';
-            require_once AIHS_PLUGIN_DIR . 'admin/class-aihs-admin-packages.php';
-            require_once AIHS_PLUGIN_DIR . 'admin/class-aihs-reports.php';
-        }
-
-        // Frontend classes
-        if (!is_admin()) {
-            require_once AIHS_PLUGIN_DIR . 'frontend/class-aihs-form.php';
-            require_once AIHS_PLUGIN_DIR . 'frontend/class-aihs-quiz.php';
-            require_once AIHS_PLUGIN_DIR . 'frontend/class-aihs-results.php';
-            require_once AIHS_PLUGIN_DIR . 'frontend/class-aihs-display.php';
         }
 
         // Shortcodes
