@@ -15,6 +15,7 @@
  * Requires PHP: 8.1
  * WC requires at least: 8.0
  * WC tested up to: 8.5
+ * Requires Plugins: woocommerce
  */
 
 // Prevent direct access
@@ -66,6 +67,9 @@ class AI_Health_Savetnik {
      * Initialize plugin
      */
     public function init() {
+        // Declare WooCommerce HPOS compatibility
+        add_action('before_woocommerce_init', array($this, 'declare_woocommerce_compatibility'));
+
         // Check if WooCommerce is active
         if (!class_exists('WooCommerce')) {
             add_action('admin_notices', array($this, 'woocommerce_missing_notice'));
@@ -454,6 +458,15 @@ class AI_Health_Savetnik {
             'ajaxurl' => admin_url('admin-ajax.php'),
             'nonce' => wp_create_nonce('aihs_admin_nonce')
         ));
+    }
+
+    /**
+     * Declare WooCommerce HPOS compatibility
+     */
+    public function declare_woocommerce_compatibility() {
+        if (class_exists('\Automattic\WooCommerce\Utilities\FeaturesUtil')) {
+            \Automattic\WooCommerce\Utilities\FeaturesUtil::declare_compatibility('custom_order_tables', __FILE__, true);
+        }
     }
 
     /**
